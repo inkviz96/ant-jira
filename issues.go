@@ -70,7 +70,7 @@ func (s *IssuesService) GetIssues() (*IssuesList, *Response, error) {
 }
 
 func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context, options *GetQueryOptions) (*IssuesList, *Response, error) {
-	apiEndpoint := "rest/api/3/search?jql=ORDER%20BY%20Created&maxResults=100"
+	apiEndpoint := "rest/api/3/search"
 	req, err := s.client.NewRequestWithContext(ctx, "GET", apiEndpoint, nil)
 	fmt.Printf("request")
 	fmt.Println(req)
