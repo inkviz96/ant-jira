@@ -2,8 +2,6 @@ package jira
 
 import (
 	"context"
-
-	"github.com/google/go-querystring/query"
 )
 
 // ProjectService handles projects for the Jira instance / API.
@@ -61,26 +59,18 @@ type Project struct {
 }
 
 func (s *IssuesService) GetListWithContext(ctx context.Context) (*IssuesList, *Response, error) {
-	return s.ListWithOptionsWithContext(ctx, &GetQueryOptions{})
+	return s.ListWithOptionsWithContext(ctx)
 }
 
 func (s *IssuesService) GetIssues() (*IssuesList, *Response, error) {
 	return s.GetListWithContext(context.Background())
 }
 
-func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context, options *GetQueryOptions) (*IssuesList, *Response, error) {
+func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context) (*IssuesList, *Response, error) {
 	apiEndpoint := "rest/api/3/search?jql=ORDER%20BY%20Created&maxResults=100"
 	req, err := s.client.NewRequestWithContext(ctx, "GET", apiEndpoint, nil)
 	if err != nil {
 		return nil, nil, err
-	}
-
-	if options != nil {
-		q, err := query.Values(options)
-		if err != nil {
-			return nil, nil, err
-		}
-		req.URL.RawQuery = q.Encode()
 	}
 
 	issuesList := new(IssuesList)
