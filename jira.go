@@ -298,16 +298,6 @@ func newResponse(r *http.Response, v interface{}) *Response {
 // Sets paging values if response json was parsed to searchResult type
 // (can be extended with other types if they also need paging info)
 func (r *Response) populatePageValues(v interface{}) {
-	switch value := v.(type) {
-	case *searchResult:
-		r.StartAt = value.StartAt
-		r.MaxResults = value.MaxResults
-		r.Total = value.Total
-	case *groupMembersResult:
-		r.StartAt = value.StartAt
-		r.MaxResults = value.MaxResults
-		r.Total = value.Total
-	}
 }
 
 // BasicAuthTransport is an http.RoundTripper that authenticates all requests
