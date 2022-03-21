@@ -38,28 +38,8 @@ type Client struct {
 	session *Session
 
 	// Services used for talking to different parts of the Jira API.
-	Authentication   *AuthenticationService
-	Issue            *IssueService
-	Project          *ProjectService
-	Board            *BoardService
-	Sprint           *SprintService
-	User             *UserService
-	Group            *GroupService
-	Version          *VersionService
-	Priority         *PriorityService
-	Field            *FieldService
-	Component        *ComponentService
-	Resolution       *ResolutionService
-	StatusCategory   *StatusCategoryService
-	Filter           *FilterService
-	Role             *RoleService
-	PermissionScheme *PermissionSchemeService
-	Status           *StatusService
-	IssueLinkType    *IssueLinkTypeService
-	Organization     *OrganizationService
-	ServiceDesk      *ServiceDeskService
-	Customer         *CustomerService
-	Request          *RequestService
+	Authentication *AuthenticationService
+	Issue          *IssuesService
 }
 
 // NewClient returns a new Jira API client.
