@@ -44,15 +44,15 @@ type Fields struct {
 }
 
 type Creator struct {
-	DisplayName string `json:"displayName,omitempty struct:"displayName,omitempty"`
+	DisplayName string `json:"displayName,omitempty" structs:"displayName,omitempty"`
 }
 
 type Priority struct {
-	Name string `json:"name,omitempty" struct:"name,omitempty"`
+	Name string `json:"name,omitempty" structs:"name,omitempty"`
 }
 
 type Status struct {
-	Name string `json:"name,omitempty" struct:"name,omitempty"`
+	Name string `json:"name,omitempty" structs:"name,omitempty"`
 }
 
 type Project struct {
@@ -87,12 +87,12 @@ func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context, options 
 
 	issuesList := new(IssuesList)
 	resp, err := s.client.Do(req, issuesList)
+	fmt.Printf("response")
+	fmt.Println(resp)
 	if err != nil {
 		jerr := NewJiraError(resp, err)
 		return nil, resp, jerr
 	}
-	fmt.Printf("response")
-	fmt.Println(resp)
 
 	return issuesList, resp, nil
 }
