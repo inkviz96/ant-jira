@@ -2,6 +2,7 @@ package jira
 
 import (
 	"context"
+	"fmt"
 )
 
 // ProjectService handles projects for the Jira instance / API.
@@ -20,7 +21,7 @@ type IssuesList []struct {
 	Issues     Issues `json:"issues" structs:"issues"`
 }
 
-// ProjectCategory represents a single project category
+// ProjectCatreqegory represents a single project category
 type Issues struct {
 	Expand string `json:"expand,omitempty" structs:"expand,omitempty"`
 	ID     string `json:"id,omitempty" structs:"id,omitempty"`
@@ -79,6 +80,7 @@ func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context) (*Issues
 		jerr := NewJiraError(resp, err)
 		return nil, resp, jerr
 	}
+	fmt.Println(resp)
 
 	return issuesList, resp, nil
 }
