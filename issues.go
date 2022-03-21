@@ -72,6 +72,8 @@ func (s *IssuesService) GetIssues() (*IssuesList, *Response, error) {
 func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context, options *GetQueryOptions) (*IssuesList, *Response, error) {
 	apiEndpoint := "rest/api/3/search?jql=ORDER%20BY%20Created&maxResults=100"
 	req, err := s.client.NewRequestWithContext(ctx, "GET", apiEndpoint, nil)
+	fmt.Printf("request")
+	fmt.Println(req)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -89,8 +91,8 @@ func (s *IssuesService) ListWithOptionsWithContext(ctx context.Context, options 
 		jerr := NewJiraError(resp, err)
 		return nil, resp, jerr
 	}
+	fmt.Printf("response")
 	fmt.Println(resp)
-	fmt.Println(err)
 
 	return issuesList, resp, nil
 }
