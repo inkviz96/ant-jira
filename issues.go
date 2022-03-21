@@ -16,11 +16,11 @@ type IssuesService struct {
 
 // ProjectList represent a list of Projects
 type IssuesList []struct {
-	Expand     string `json:"expand" structs:"expand"`
-	StartAt    int32  `json:"startAt" structs:"startAt"`
-	MaxResults int32  `json:"maxResults" structs:"maxResults"`
-	Total      int32  `json:"total" structs:"total"`
-	Issues     Issues `json:"issues" structs:"issues"`
+	Expand     string `json:"expand,omitempty" structs:"expand,omitempty"`
+	StartAt    int32  `json:"startAt,omitempty" structs:"startAt,omitempty"`
+	MaxResults int32  `json:"maxResults,omitempty" structs:"maxResults,omitempty"`
+	Total      int32  `json:"total,omitempty" structs:"total,omitempty"`
+	Issues     Issues `json:"issues,omitempty" structs:"issues,omitempty"`
 }
 
 // ProjectCatreqegory represents a single project category
